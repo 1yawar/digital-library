@@ -268,7 +268,9 @@ searchBtn.addEventListener("click", async () => {
       homeBtn.innerText = "Home";
       homeBtn.onclick = () => {
       searchState = true;
-      getBooks();
+      disk = document.querySelector(".disk");
+      disk?.classList.remove("disk");
+      getBooks() 
       this.pagination();
       document.getElementById("input").value = "";
       document.querySelector(".Books").innerHTML = "";
@@ -300,6 +302,8 @@ searchBtn.addEventListener("click", async () => {
     homeBtn.innerText = "Home";
     homeBtn.onclick = () => {
       searchState = true;
+      disk = document.querySelector(".disk");
+      disk?.classList.remove("disk");
       getBooks();
       this.pagination();
       document.getElementById("input").value = "";
@@ -351,7 +355,7 @@ async function getSortedData(option){
         a.volumeInfo.title.localeCompare(b.volumeInfo.title)
       );
       document.querySelector(".Books").innerHTML = "";
-      optionActive = document.querySelector("option-active");
+      optionActive = document.querySelector(".option-active");
       optionActive ? optionActive.classList.remove("option-active") : "";
       document.getElementById("option1").classList.add("option-active");
       pagenumber = document.querySelector(".active").textContent;
@@ -367,7 +371,7 @@ async function getSortedData(option){
       );
       sortedData.reverse();
       document.querySelector(".Books").innerHTML = "";
-      optionActive = document.querySelector("option-active");
+      optionActive = document.querySelector(".option-active");
       optionActive ? optionActive.classList.remove("option-active") : "";
       document.getElementById("option2").classList.add("option-active");
       pagenumber = document.querySelector(".active").textContent;
@@ -384,7 +388,7 @@ async function getSortedData(option){
         return authorA.localeCompare(authorB);
       });
       document.querySelector(".Books").innerHTML = "";
-      optionActive = document.querySelector("option-active");
+      optionActive = document.querySelector(".option-active");
       optionActive ? optionActive.classList.remove("option-active") : "";
       document.getElementById("option3").classList.add("option-active");
       pagenumber = document.querySelector(".active").textContent;
@@ -402,7 +406,7 @@ async function getSortedData(option){
       });
       sortedData.reverse();
       document.querySelector(".Books").innerHTML = "";
-      optionActive = document.querySelector("option-active");
+      optionActive = document.querySelector(".option-active");
       optionActive ? optionActive.classList.remove("option-active") : "";
       document.getElementById("option4").classList.add("option-active");
       pagenumber = document.querySelector(".active").textContent;
@@ -419,7 +423,7 @@ async function getSortedData(option){
         return ADate-BDate;
       });
       document.querySelector(".Books").innerHTML = "";
-      optionActive = document.querySelector("option-active");
+      optionActive = document.querySelector(".option-active");
       optionActive ? optionActive.classList.remove("option-active") : "";
       document.getElementById("option5").classList.add("option-active");
       pagenumber = document.querySelector(".active").textContent;
@@ -437,7 +441,7 @@ async function getSortedData(option){
       });
       sortedData.reverse()
       document.querySelector(".Books").innerHTML = "";
-      optionActive = document.querySelector("option-active");
+      optionActive = document.querySelector(".option-active");
       optionActive ? optionActive.classList.remove("option-active") : "";
       document.getElementById("option6").classList.add("option-active");
       pagenumber = document.querySelector(".active").textContent;
@@ -456,4 +460,5 @@ function sortedDisplay(pageNumber){
   pageNumber = parseInt(pageNumber)
   const displayData = sortedData.slice((pageNumber-1)*12, pageNumber*12)
   display(displayData)
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
